@@ -30,10 +30,11 @@ final _router = Router()
   ..get('/echo/<message>', _echoHandler);
 
 Future<Response> _rootHandler(Request req) async {
-  var command = await redis.connect(CONSTANT.REDIS_SERVER, CONSTANT.REDIS_PORT);
+  var command = await redis.connect(Constant.REDIS_SERVER, Constant.REDIS_PORT);
   try {
     return Response.ok(
-        'Hello from lambda 1,\n msg: ${await command.get('echo')}!\n');
+      'Hello from lambda 1,\nmsg: ${await command.get('echo')}',
+    );
   } catch (e) {
     return Response.internalServerError(body: e.toString());
   } finally {
@@ -45,12 +46,13 @@ Future<Response> _echoHandler(Request request) async {
   try {
     final message = request.params['message'];
     var command =
-        await redis.connect(CONSTANT.REDIS_SERVER, CONSTANT.REDIS_PORT);
+        await redis.connect(Constant.REDIS_SERVER, Constant.REDIS_PORT);
     await command.send_object(["set", "echo", message, "EX", 60]);
     return Response.ok('$message\n');
   } on RedisError {
     return Response.internalServerError(
-        body: 'Error while saving data. please try again');
+      body: 'Error while saving data. please try again',
+    );
   } catch (e) {
     return Response.internalServerError(body: e.toString());
   } finally {

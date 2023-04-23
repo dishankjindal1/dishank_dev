@@ -29,8 +29,8 @@ final _router = Router()
   ..get('${Constant.lambda1hostname}/<message>', _lambdaHandler1)
   ..get(Constant.lambda2hostname, _lambdaHandler2)
   ..get('${Constant.lambda2hostname}/<message>', _lambdaHandler2)
-  ..get(Constant.lambda2hostname, _lambdaHandler3)
-  ..get('${Constant.lambda2hostname}/<message>', _lambdaHandler3);
+  ..get(Constant.lambda3hostname, _lambdaHandler3)
+  ..get('${Constant.lambda3hostname}/<message>', _lambdaHandler3);
 
 Response _rootHandler(Request req) {
   return Response.ok('Hello, World!\n');
@@ -41,11 +41,11 @@ Future<Response> _lambdaHandler1(Request request) async {
     final message = request.params['message'];
     if (message == null) {
       final res = await dioHandler.get(Constant.lambda1hostip);
-      return Response.ok('$res\n${request.requestedUri.path.endsWith('/')}');
+      return Response.ok('$res');
     } else {
       final res = await dioHandler
           .get('${Constant.lambda1hostip}${Constant.echo}/$message');
-      return Response.ok('$res\n');
+      return Response.ok('$res');
     }
   } on FormatException catch (e) {
     return Response.badRequest(body: e.message);
@@ -61,11 +61,11 @@ Future<Response> _lambdaHandler2(Request request) async {
     final message = request.params['message'];
     if (message == null) {
       final res = await dioHandler.get(Constant.lambda2hostip);
-      return Response.ok('$res\n');
+      return Response.ok('$res');
     } else {
       final res = await dioHandler
           .get('${Constant.lambda2hostip}${Constant.echo}/$message');
-      return Response.ok('$res\n');
+      return Response.ok('$res');
     }
   } on FormatException catch (e) {
     return Response.badRequest(body: e.message);
@@ -81,11 +81,11 @@ Future<Response> _lambdaHandler3(Request request) async {
     final message = request.params['message'];
     if (message == null) {
       final res = await dioHandler.get(Constant.lambda3hostip);
-      return Response.ok('$res\n');
+      return Response.ok('$res');
     } else {
       final res = await dioHandler
           .get('${Constant.lambda3hostip}${Constant.echo}/$message');
-      return Response.ok('$res\n');
+      return Response.ok('$res');
     }
   } on FormatException catch (e) {
     return Response.badRequest(body: e.message);

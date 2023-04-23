@@ -5,6 +5,8 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
 
+import 'utilites/constants.dart';
+
 // Configure routes.
 final _router = Router()
   ..get('/', _rootHandler)
@@ -15,7 +17,8 @@ Future<Response> _rootHandler(Request req) async {
     var command = await redis;
 
     return Response.ok(
-        'Hello from lambda 2,\n msg: ${await command.get('echo')}!\n');
+      'Hello from lambda 2,\nmsg: ${await command.get('echo')}',
+    );
   } catch (e) {
     return Response.internalServerError(body: e.toString());
   }
@@ -26,16 +29,18 @@ Future<Response> _echoHandler(Request request) async {
     final message = request.params['message'];
     var command = await redis;
     await command.send_object(["set", "echo", message, "EX", 60]);
-    return Response.ok('$message\n');
+    return Response.ok('$message');
   } on RedisError {
     return Response.internalServerError(
-        body: 'Error while saving data. please try again');
+      body: 'Error while saving data. please try again',
+    );
   } catch (e) {
     return Response.internalServerError(body: e.toString());
   }
 }
 
-final redis = RedisConnection().connect('28.6.1.1', 6379);
+final redis =
+    RedisConnection().connect(Constant.REDIS_SERVER, Constant.REDIS_PORT);
 
 void main(List<String> args) async {
   // Use any available host or container IP (usually `0.0.0.0`).

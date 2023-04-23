@@ -15,3 +15,9 @@
 - If you want to make games, or software like photoshop, etc. Then i would still not bet on dart. !Some folds had proved me wrong already, for ex company like RIVE who is alternative to Adobe suite.
 
 - **FUTURE IS LOOKING BRIGHT OF DART**
+
+## Setup
+
+- install fswatch
+- install dart
+- install docker
