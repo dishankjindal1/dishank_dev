@@ -1,0 +1,61 @@
+version: "3"
+name: backend-dart
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    build:
+      dockerfile: ./redis/Dockerfile
+    expose:
+      - 6379
+    networks:
+      backend-network:
+        ipv4_address: 28.6.1.1
+  api-gateway:
+    image: api-gateway:lates
+    container_name: api-gateway
+    build:
+      dockerfile: ./api-gateway/Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - redis
+    networks:
+      backend-network:
+        ipv4_address: 28.6.2.1
+  lambda1:
+    image: lambda1:latest
+    container_name: lambda1
+    build:
+      dockerfile: ./lambda1/Dockerfile
+    depends_on:
+      - redis
+    networks:
+      backend-network:
+        ipv4_address: 28.6.255.1
+  lambda2:
+    image: lambda2:latest
+    container_name: lambda2
+    build:
+      dockerfile: ./lambda2/Dockerfile
+    depends_on:
+      - redis
+    networks:
+      backend-network:
+        ipv4_address: 28.6.255.2
+  lambda3:
+    image: lambda3:latest
+    container_name: lambda3
+    build:
+      dockerfile: ./lambda3/Dockerfile
+    depends_on:
+      - redis
+    networks:
+      backend-network:
+        ipv4_address: 28.6.255.3
+networks:
+  backend-network:
+    ipam:
+      config:
+        - subnet: 28.6.0.0/16
+          gateway: 28.6.0.1

@@ -1,52 +1,17 @@
-# README
+# dart-backend
 
-A server app built using [Shelf](https://pub.dev/packages/shelf),
-configured to enable running with [Docker](https://www.docker.com/).
+- As the name is self explanatory, I am using dart client-optimized programming language to write code to create API so that front-end can talk with the backend resources.
 
-This sample code handles HTTP GET requests to `/` and `/echo/<message>`
+## My Beliefs
 
-## Running with the Dart SDK
+- I have a bais for the dart language as it can truly become the language which can help full-stack developer to bring out the best.
 
-You can run the example with the [Dart SDK](https://dart.dev/get-dart)
-like this:
+- Another reason, Javascript is very popular but has carried forward some flaws with it. And due to its wide adoption, those change are being carried forward to new versions and fixing is becoming next to impossible.
 
-```zsh
-$ dart run bin/server.dart
-Server listening on port 8080
-```
+- Mircosoft came up with TypeScript a superset of javascript, they avoided javascript mistakes by smart workarounds, instead of getting it FIXED.
 
-And then from a second terminal:
+- In my opinion, Dart is good becuase it shits Machine code because of it AOT compilation. Which is a goody-goody to me at least. It has a runtime which is not significant for most day to day enterprise operations.
 
-```zsh
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
-```
+- If you want to make games, or software like photoshop, etc. Then i would still not bet on dart. !Some folds had proved me wrong already, for ex company like RIVE who is alternative to Adobe suite.
 
-## Running with Docker
-
-If you have [Docker Desktop](https://www.docker.com/get-started) installed, you
-can build and run with the `docker` command:
-
-```zsh
-$ docker build . -t myserver
-$ docker run -it -p 8080:8080 myserver
-Server listening on port 8080
-```
-
-And then from a second terminal:
-
-```bash
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
-```
-
-You should see the logging printed in the first terminal:
-
-```zsh
-2021-05-06T15:47:04.620417  0:00:00.000158 GET     [200] /
-2021-05-06T15:47:08.392928  0:00:00.001216 GET     [200] /echo/I_love_Dart
-```
+- **FUTURE IS LOOKING BRIGHT OF DART**
