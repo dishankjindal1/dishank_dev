@@ -14,7 +14,14 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.4
+  go_router: ^7.0.0
   flutter_vector_icons: ^2.0.0
+  go_router_builder: ^1.2.2
+  build_runner: ^2.3.3
+  flutter_riverpod: ^2.3.6
+  riverpod_builder: ^0.1.8
+  riverpod_generator: ^2.2.1
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
