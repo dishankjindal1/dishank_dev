@@ -33,7 +33,7 @@ class _LandingPageState extends State<LandingPage> {
       if (pageCtrl.page != null) {
         log(pageCtrl.page.toString());
         if (double.parse(pageCtrl.page!.toStringAsFixed(1)) <= 0.8) {
-          hireMeListener.value = false;
+          hireMeListener.value = true;
 
           imageCtrl.animateToPage(0,
               duration: const Duration(milliseconds: 400),
