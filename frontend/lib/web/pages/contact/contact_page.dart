@@ -95,7 +95,7 @@ class ContactPage extends StatelessWidget {
             color: MyPallet.yellow,
           ),
         ),
-        const SizedBox(height: 50),
+        const SizedBox(height: 48),
       ],
     );
   }

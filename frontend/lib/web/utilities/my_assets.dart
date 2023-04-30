@@ -1,5 +1,6 @@
 class MyAssets {
   static const homeBgImage = 'assets/website_bg_image.png';
+  static const expertiseBgImage = 'assets/expertise_bg_image.png';
   static const contactMeBgImage = 'assets/contact_me_bg_image.png';
 
   static const logo1 = 'assets/logo_1.png';
